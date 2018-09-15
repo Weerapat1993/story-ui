@@ -1,0 +1,71 @@
+{
+  "name": "story-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "styled-components": "^3.4.6"
+  },
+  "devDependencies": {
+    "@immowelt/jest-preset-react": "^1.1.3",
+    "@storybook/addon-actions": "^3.4.10",
+    "@storybook/addon-links": "^3.4.10",
+    "@storybook/addons": "^3.4.10",
+    "@storybook/react": "^3.4.10",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^9.0.0",
+    "babel-jest": "^23.6.0",
+    "babel-runtime": "^6.26.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "eslint": "^5.5.0",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.6.0",
+    "regenerator-runtime": "^0.12.1",
+    "webpack": "^4.18.0"
+  },
+  "jest": {
+    "preset": "@immowelt/jest-preset-react",
+    "setupTestFrameworkScriptFile": "<rootDir>/src/config/enzyme.js",
+    "unmockedModulePathPatterns": [
+      "node_modules/react/",
+      "node_modules/enzyme/"
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/config/",
+      "<rootDir>/node_modules/"
+    ],
+    "verbose": true
+  },
+  "eslintConfig": {
+    "extends": "react-app",
+    "rules": {
+      "react/jsx-filename-extension": 0,
+      "import/prefer-default-export": 0,
+      "jsx-a11y/anchor-is-valid": 0,
+      "import/no-unresolved": 0,
+      "jsx-a11y/href-no-hash": 0
+    },
+    "settings": {
+      "import/resolver": "webpack"
+    }
+  },
+  "eslintIgnore": [
+    "*.test.js",
+    "*.spec.js"
+  ]
+}
