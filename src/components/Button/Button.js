@@ -1,37 +1,39 @@
 import React from 'react'
-import { bool, string, node, oneOfType, element, func } from 'prop-types'
+import { string, bool } from 'prop-types'
 import styled from 'styled-components'
 
+// Constants
+export const BTN_COLOR = 'green'
+
 export const BTN = styled.button`
-  background: ${props => props.primary ? "palevioletred" : "white"};
-  color: ${props => props.primary ? "white" : "palevioletred"};
+  background: ${props => props.primary ? props.color : "white"};
+  color: ${props => props.primary ? "white" : props.color};
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
-  border: 2px solid palevioletred;
+  border: 2px solid ${props => props.color};
   border-radius: 3px;
 `;
 
 const Button = (props) => {
-  const { children, primary } = props
+  const { title, primary, children, color } = props
   return (
-    <BTN {...props} primary={primary}>{children}</BTN>
+    <BTN {...props} color={color} primary={primary}>{title || children}</BTN>
   )
 }
 
 Button.propTypes = {
+  title: string,
   primary: bool,
-  children: oneOfType([
-    string,
-    element,
-    node,
-    func,
-  ])
+  children: string,
+  color: string,
 }
 
 Button.defaultProps = {
+  title: '',
   primary: false,
-  children: null,
+  children: '',
+  color: BTN_COLOR,
 }
 
 export default Button
