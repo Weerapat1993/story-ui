@@ -1,10 +1,10 @@
 import React from 'react'
+import { bool, string, node, oneOfType, element, func } from 'prop-types'
 import styled from 'styled-components'
 
-const BTN = styled.button`
+export const BTN = styled.button`
   background: ${props => props.primary ? "palevioletred" : "white"};
   color: ${props => props.primary ? "white" : "palevioletred"};
-
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
@@ -17,6 +17,21 @@ const Button = (props) => {
   return (
     <BTN {...props} primary={primary}>{children}</BTN>
   )
+}
+
+Button.propTypes = {
+  primary: bool,
+  children: oneOfType([
+    string,
+    element,
+    node,
+    func,
+  ])
+}
+
+Button.defaultProps = {
+  primary: false,
+  children: null,
 }
 
 export default Button

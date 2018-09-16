@@ -1,33 +1,30 @@
 import React from 'react'
 import { shallow } from 'enzyme';
-import Button from '../Button'
+import 'jest-styled-components'
+import { BTN } from '../Button'
+import { Button } from '../index'
 
 
 describe('<Button />', () => {
-  it('renders <Button /> components', () => {
-    const App = () => (
-      <Button>Title</Button>
-    )
-    const wrapper = shallow(<App />);
-    const recieved = wrapper.find('Button').length
-    expect(recieved).toEqual(1)
-  })
-
-  it('renders <Button /> components check primary = true', () => {
-    const App = () => (
-      <Button primary>Title</Button>
-    )
-    const wrapper = shallow(<App />);
-    const recieved = wrapper.props().primary
+  it('renders <BTN /> components check primary = true', () => {
+    const wrapper = shallow(<Button primary>Title</Button>);
+    const recieved = wrapper.find(BTN).props().primary
     expect(recieved).toEqual(true)
   })
 
-  it('renders <Button /> components check children = Title', () => {
-    const App = () => (
-      <Button primary>Title</Button>
-    )
-    const wrapper = shallow(<App />);
-    const recieved = wrapper.props().children
-    expect(recieved).toEqual('Title')
+  it('renders <BTN /> components check primary = false', () => {
+    const wrapper = shallow(<Button>Title</Button>);
+    const recieved = wrapper.find(BTN).props().primary
+    expect(recieved).toEqual(false)
+  })
+  it('renders <BTN /> components check style color when primary = false', () => {
+    const wrapper = shallow(<Button>Title</Button>);
+    expect(wrapper).toHaveStyleRule('color', 'palevioletred')
+    expect(wrapper).toHaveStyleRule('background', 'white')
+  })
+  it('renders <BTN /> components check style color when primary = true', () => {
+    const wrapper = shallow(<Button primary>Title</Button>);
+    expect(wrapper).toHaveStyleRule('color', 'white')
+    expect(wrapper).toHaveStyleRule('background', 'palevioletred')
   })
 })
