@@ -2,18 +2,29 @@ import React, { Fragment } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import { Welcome } from '@storybook/react/demo'
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
-import { 
-  Button, 
-  Card,
-} from '../index'
+import { Button } from '../index'
+
+const stories = storiesOf('Button', module);
+
+// Add the `withKnobs` decorator to add knobs support to your stories.
+// You can also configure `withKnobs` as a global decorator.
+stories.addDecorator(withKnobs);
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
-storiesOf('Button', module)
-  .add('with text', () => (
+// Button
+stories.add('with text', () => (
     <Fragment>
+      <div>
+        <Button 
+          title={text('Title', 'Title')}
+          color={text('Color', 'green')} 
+          primary={boolean('Primary', true)} 
+          onClick={action('clicked')}
+        />
+      </div>
       <div>
         <Button onClick={action('clicked')}>Default</Button>
         <Button primary onClick={action('clicked')}>Primary</Button>
@@ -30,27 +41,6 @@ storiesOf('Button', module)
         <Button color='black' onClick={action('clicked')}>Black</Button>
         <Button color='gray' onClick={action('clicked')}>Gray</Button>
       </div>
-    </Fragment>
-  )
-);
-
-const cardArr = ['red', 'green', 'blue']
-
-storiesOf('Card', module)
-  .add('Card Basic', () => (
-    <Fragment>
-      <Card title={<Skeleton width={200} count={1} />} actions={() => 'Actions'}>
-        <Skeleton count={5} />
-      </Card>
-      {
-        cardArr.map((item, key) => (
-          <SkeletonTheme key={key} highlightColor={item}>
-            <Card title={<Skeleton width={200} count={1} />} color={item} actions={() => 'Actions'}>
-              <Skeleton count={5} />
-            </Card>
-          </SkeletonTheme>
-        ))
-      }
     </Fragment>
   )
 );
