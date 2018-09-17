@@ -1,13 +1,9 @@
 import React, { Fragment } from 'react';
-import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
 import { text, boolean } from '@storybook/addon-knobs';
-import { Welcome } from '@storybook/react/demo'
 import { Button } from '../index'
 import { configStories } from './config'
 
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 const stories = configStories(() => (
   <Button 
     title={text('Title', 'Title')}

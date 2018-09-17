@@ -14,7 +14,7 @@ setDefaults({
 });
 configure(loadStories, module);
 setOptions({
-  name: 'Storybook',
+  name: 'Magenta UI',
   sidebarAnimations: false,
 })
 viewFunction({

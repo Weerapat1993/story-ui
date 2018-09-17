@@ -2,7 +2,6 @@ import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
 import addonBackgrounds from "@storybook/addon-backgrounds";
-import { withNotes } from '@storybook/addon-notes';
 
 // Backgrounds
 export const backgrounds = addonBackgrounds([
@@ -26,7 +25,7 @@ export const configStories = (func, name, description, example) => {
   // Addons
   stories.addDecorator(withKnobs);
   stories.addDecorator(backgrounds);
-  stories.add('Introduction', withNotes(require(`../docs/${name}.md`))(example));
+  stories.add('Introduction', example);
   stories.add('Playground', 
   withInfo({ 
     styles,
