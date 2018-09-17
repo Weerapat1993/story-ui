@@ -8,7 +8,11 @@ import { Button } from '../index'
 
 // Constants
 const BTN_COLOR = '#00aced'
-const links = ['Button', 'Card']
+const components = [
+  'Button', 
+  'Card',
+  'Grid',
+]
 
 // Getting Started
 const GettingStarted = `# Getting Started
@@ -73,7 +77,7 @@ stories
     <Container>
       <Marked md={'# Components'} />
       {
-        links.map((item) => (
+        components.map((item) => (
           <Button key={item} color={BTN_COLOR} onClick={linkTo(item)} title={item} />
         ))
       }

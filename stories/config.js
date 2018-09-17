@@ -46,7 +46,7 @@ export const configStories = (playground, name, description, example) => {
       <br />
       <div>
         <Back />
-        <Button color={'#00aced'} onClick={linkTo(name, 'PropTypes')} title='Go to PropTypes' />
+        <PropTypes name={name}/>
       </div>
       {playground()}
       <br />
@@ -67,6 +67,14 @@ export const Back = ({ color }) => (
     title='Go Back'
     color={color || 'gray'}
     onClick={linkTo('Magenta UI', 'Components')}
+  />
+)
+
+export const PropTypes = ({ name }) => (
+  <Button 
+    title='Go to PropTypes'
+    color={'#00aced'}
+    onClick={linkTo(name, 'PropTypes')}
   />
 )
 
