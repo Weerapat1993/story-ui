@@ -44,10 +44,14 @@ export const configStories = (playground, name, description, example) => {
     <Container>
       <Marked md={`# ${name}`} />
       <br />
-      <div><Back /></div>
+      <div>
+        <Back />
+        <Button color={'#00aced'} onClick={linkTo(name, 'PropTypes')} title='Go to PropTypes' />
+      </div>
       {playground()}
       <br />
       <Marked md={Code(playground(), name)} />
+      <br />
       {example()}
     </Container>
   ));
