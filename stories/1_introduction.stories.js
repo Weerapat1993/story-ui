@@ -4,7 +4,7 @@ import { linkTo } from '@storybook/addon-links';
 import Marked from 'storybook-readme/components/Marked';
 import styled from 'styled-components'
 import { withDocs } from 'storybook-readme';
-import { Button } from '../index'
+import { Button } from '..'
 
 // Constants
 const BTN_COLOR = '#00aced'
