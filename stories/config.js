@@ -4,7 +4,19 @@ import { withInfo } from '@storybook/addon-info';
 import { linkTo } from '@storybook/addon-links';
 import { withKnobs } from '@storybook/addon-knobs';
 import addonBackgrounds from "@storybook/addon-backgrounds";
+import Marked from 'storybook-readme/components/Marked';
+import { withDocs } from 'storybook-readme';
+import reactElementToJSXString from 'react-element-to-jsx-string';
+import styled from 'styled-components'
 import { Button } from '../index'
+
+const Code = (element, name) => `
+**Usage**
+~~~js
+${reactElementToJSXString(element)}
+~~~
+**Example**
+`
 
 // Backgrounds
 export const backgrounds = addonBackgrounds([
@@ -23,27 +35,26 @@ export const styles = {
 }
 
 // Config Stories
-export const configStories = (func, name, description, example) => {
+export const configStories = (playground, name, description, example) => {
   const stories = storiesOf(name, module);
   // Addons
   stories.addDecorator(withKnobs);
   stories.addDecorator(backgrounds);
   stories.add('Introduction', () => (
-    <Fragment>
+    <Container>
+      <Marked md={`# ${name}`} />
+      <br />
       <div><Back /></div>
+      {playground()}
+      <br />
+      <Marked md={Code(playground(), name)} />
       {example()}
-    </Fragment>
+    </Container>
   ));
-  stories.add('Playground', 
-  withInfo({ 
+  stories.add('PropTypes', withInfo({ 
     styles,
     text: description,
-  })(() => (
-    <Fragment>
-      <div><Back /></div>
-      {func()}
-    </Fragment>
-  )))
+  })(playground));
   return stories
 }
 
@@ -54,3 +65,7 @@ export const Back = ({ color }) => (
     onClick={linkTo('Magenta UI', 'Components')}
   />
 )
+
+export const Container = styled.div`
+  padding: 10px;
+`

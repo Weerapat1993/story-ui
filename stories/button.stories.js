@@ -17,14 +17,6 @@ const stories = configStories(() => (
 () => (
   <Fragment>
     <div>
-      <Button 
-        title={text('Title', 'Title')}
-        color={text('Color', 'green')} 
-        primary={boolean('Primary', true)} 
-        onClick={action('clicked')}
-      />
-    </div>
-    <div>
       <Button onClick={action('clicked')}>Default</Button>
       <Button primary onClick={action('clicked')}>Primary</Button>
       <Button color='blue' primary onClick={action('clicked')}>Blue</Button>

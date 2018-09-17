@@ -19,12 +19,6 @@ const stories = configStories(() => (
   'String or React Element with docs about my component',
 () => (
   <Fragment>
-    <Card
-      title={text('Card Title', 'Card Title')}
-      color={text('Card Color', 'brown')} 
-      actions={() => 'Actions'}>
-      <Skeleton count={5} />
-    </Card>
     {
       cardArr.map((item, key) => (
         <SkeletonTheme key={key} highlightColor={item}>

@@ -45,6 +45,7 @@
     "eslint-plugin-react": "^7.11.1",
     "jest": "^23.6.0",
     "jest-styled-components": "^6.2.0",
+    "react-element-to-jsx-string": "^14.0.1",
     "react-test-renderer": "^16.5.1",
     "regenerator-runtime": "^0.12.1",
     "storybook-readme": "^4.0.0-beta1",

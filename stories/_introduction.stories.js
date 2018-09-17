@@ -50,6 +50,7 @@ const Container = styled.div`
 `
 
 const stories = storiesOf('Magenta UI', module);
+const menuBtn = (name) => <Button color={BTN_COLOR} onClick={linkTo('Magenta UI', name)} title={name} />
 
 // Introduction
 stories
@@ -57,18 +58,15 @@ stories
   .add('Getting Started', () => (
     <Container>
       <Marked md={GettingStarted} />
-      <Button color={BTN_COLOR} onClick={linkTo('Magenta UI', 'Installation')} title='Installation' />
-      <Button color={BTN_COLOR} onClick={linkTo('Magenta UI', 'Components')} title='Components' />
+      {menuBtn('Installation')}
+      {menuBtn('Components')}
     </Container>
   ))
   .add('Installation', () => (
     <Container>
       <Marked md={Installation} />
-      {
-        links.map((item) => (
-          <Button key={item} color={BTN_COLOR} onClick={linkTo(item)} title={item} />
-        ))
-      }
+      {menuBtn('Getting Started')}
+      {menuBtn('Components')}
     </Container>
   ))
   .add('Components', () => (

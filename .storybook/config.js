@@ -10,7 +10,8 @@ function loadStories() {
 }
 
 setDefaults({
-  header: true, // Toggles display of header with component name and description
+  header: false, // Toggles display of header with component name and description
+  source: false,
 });
 configure(loadStories, module);
 setOptions({
