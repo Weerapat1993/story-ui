@@ -1,7 +1,10 @@
+import React, { Fragment } from 'react'
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
+import { linkTo } from '@storybook/addon-links';
 import { withKnobs } from '@storybook/addon-knobs';
 import addonBackgrounds from "@storybook/addon-backgrounds";
+import { Button } from '../index'
 
 // Backgrounds
 export const backgrounds = addonBackgrounds([
@@ -25,11 +28,29 @@ export const configStories = (func, name, description, example) => {
   // Addons
   stories.addDecorator(withKnobs);
   stories.addDecorator(backgrounds);
-  stories.add('Introduction', example);
+  stories.add('Introduction', () => (
+    <Fragment>
+      <div><Back /></div>
+      {example()}
+    </Fragment>
+  ));
   stories.add('Playground', 
   withInfo({ 
     styles,
     text: description,
-  })(func))
+  })(() => (
+    <Fragment>
+      <div><Back /></div>
+      {func()}
+    </Fragment>
+  )))
   return stories
 }
+
+export const Back = ({ color }) => (
+  <Button 
+    title='Go Back'
+    color={color || 'gray'}
+    onClick={linkTo('Magenta UI', 'Components')}
+  />
+)

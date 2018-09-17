@@ -57,7 +57,8 @@ stories
   .add('Getting Started', () => (
     <Container>
       <Marked md={GettingStarted} />
-      <Button color={BTN_COLOR} onClick={linkTo('Magenta UI', 'Installation')} title='Go to Installation' />
+      <Button color={BTN_COLOR} onClick={linkTo('Magenta UI', 'Installation')} title='Installation' />
+      <Button color={BTN_COLOR} onClick={linkTo('Magenta UI', 'Components')} title='Components' />
     </Container>
   ))
   .add('Installation', () => (
@@ -68,6 +69,15 @@ stories
           <Button key={item} color={BTN_COLOR} onClick={linkTo(item)} title={item} />
         ))
       }
-      
+    </Container>
+  ))
+  .add('Components', () => (
+    <Container>
+      <Marked md={'# Components'} />
+      {
+        links.map((item) => (
+          <Button key={item} color={BTN_COLOR} onClick={linkTo(item)} title={item} />
+        ))
+      }
     </Container>
   ))
