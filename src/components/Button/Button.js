@@ -19,6 +19,12 @@ export const BTN = styled.button`
   &:hover {
     background: ${props => props.outline ? props.color : "white"};
     color: ${props => props.outline ? "white" : props.color};
+    border-bottom: ${props => props.outline ? 2 : 3}px solid ${props => props.color};
+  }
+
+  &:active {
+    background: ${props => props.outline ? props.color : "white"};
+    color: ${props => props.outline ? "white" : props.color};
     border: 2px solid ${props => props.color};
   }
 `;
