@@ -35,7 +35,7 @@ const List = styled(ListAnimate)`
   font-family: Tahoma;
 
   &:hover {
-  background-color: ${props => props.highlightColor};
+    background-color: ${props => props.highlightColor || 'transparent'};
   }
 `
 
@@ -48,15 +48,13 @@ const ListItem = (props) => (
 ListItem.propTypes = {
   textColor: string,
   bgColor: string,
-  highlightColor: string,
   borderColor: string,
 }
 
 ListItem.defaultProps = {
-  textColor: '#333',
+  textColor: '#333333',
   bgColor: 'transparent',
-  highlightColor: 'rgba(0, 0, 0, 0.1)',
-  borderColor: '#999',
+  borderColor: '#CCCCCC',
 }
 
 export default ListItem

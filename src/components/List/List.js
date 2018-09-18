@@ -7,7 +7,7 @@ const List = (props) => {
     return React.cloneElement(child, {
       borderColor: props.borderColor,
       bgColor: props.bgColor,
-      highlightColor: props.highlightColor || props.bgColor ? hexToRgba(props.bgColor, 0.9) : '',
+      highlightColor: props.highlightColor,
       textColor: props.textColor,
     });
   });
@@ -21,15 +21,13 @@ const List = (props) => {
 List.propTypes = {
   borderColor: string,
   bgColor: string,
-  highlightColor: string,
   textColor: string,
 }
 
 List.defaultProps = {
-  borderColor: '#999',
+  borderColor: '#cccccc',
   bgColor: 'transparent',
-  highlightColor: '',
-  textColor: '#333',
+  textColor: '#333333',
 }
 
 export default List
