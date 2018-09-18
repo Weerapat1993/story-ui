@@ -12,7 +12,7 @@ const stories = configStories(() => (
   <Button 
     title={text('Title', 'Title')}
     color={text('Color', 'black')} 
-    primary={boolean('Outline', false)} 
+    outline={boolean('Outline', false)} 
     onClick={action('clicked')}
   />
 ),
