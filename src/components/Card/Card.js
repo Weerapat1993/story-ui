@@ -10,6 +10,7 @@ export const CardPlate = styled.div`
   background-color: #fff;
   margin-bottom: 10px;
   width: ${props => props.width ? `${props.width}px` : 'auto'};
+  box-shadow: '0px 5px 10px rgba(0,0,0,0.2)';
 `
 
 export const CardTitle = styled.div`
@@ -40,7 +41,6 @@ export const CardTitleActions = styled.div`
 export const Flex = styled.div`
   flex: 1;
 `
-
 
 const Card = (props) => {
   const { title, children, color, actions, width } = props

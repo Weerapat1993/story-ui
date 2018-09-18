@@ -1,10 +1,14 @@
 import React from 'react';
 import { List, ListItem } from '../index'
+import { text } from '@storybook/addon-knobs';
 import { configStories } from './config'
-import hexToRgba from 'hex-to-rgba'
 
 const stories = configStories(() => (
-  <List>
+  <List 
+    borderColor={text('Border Color', '#00AA00')}
+    bgColor={text('Background Color', '#AAEECC')}
+    textColor={text('Text Color', '#333')}
+  >
     <ListItem>List Item 1</ListItem>
     <ListItem>List Item 2</ListItem>
     <ListItem>List Item 3</ListItem>
@@ -25,16 +29,14 @@ const stories = configStories(() => (
 ~~~
 `,
 () => {
-  const color = '#00AA00'
   return (
-  <List>
+  <List
+    borderColor={text('Border Color', '#00AA00')}
+    bgColor={text('Background Color', '#AAEECC')}
+  >
     <ListItem>List Item 1</ListItem>
-    <ListItem color='red'>List Item 2</ListItem>
-    <ListItem 
-      color='white' 
-      bgColor={color}
-      highlightColor={hexToRgba(color, 0.9)}
-    >List Item 3</ListItem>
+    <ListItem>List Item 2</ListItem>
+    <ListItem>List Item 3</ListItem>
   </List>
   )
 })
