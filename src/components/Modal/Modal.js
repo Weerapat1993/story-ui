@@ -3,7 +3,7 @@ import posed from "react-pose";
 import styled from "styled-components";
 import { tween } from "popmotion";
 import { func, number, string, element, oneOfType, bool, node } from 'prop-types'
-
+import { Button } from '../Button'
 import { Card } from '../Card'
 
 const Fade = posed.div({
@@ -35,7 +35,7 @@ export const BlackPage = styled(Fade)`
 
 const Modal = ({ onBlur, width, children, title, visible }) => (
   <BlackPage pose={visible ? "fadeIn" : "fadeOut"} onClick={onBlur}>
-    <Card title={title} width={width}>
+    <Card title={title} width={width} color='#333' footer={() => <Button title='OK' color={'green'} onClick={onBlur} />}>
       {children}
     </Card>
   </BlackPage>

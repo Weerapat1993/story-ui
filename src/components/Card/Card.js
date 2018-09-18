@@ -3,12 +3,9 @@ import { string, oneOfType, node, func, element, number } from 'prop-types'
 import styled from 'styled-components'
 
 export const CardPlate = styled.div`
-  border-width: 1px;
   border-radius: 5px;
-  border-style: solid;
-  border-color: ${props => props.color || '#333'};
   background-color: #fff;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   width: ${props => props.width ? `${props.width}px` : 'auto'};
   box-shadow: '0px 5px 10px rgba(0,0,0,0.2)';
 `
@@ -24,18 +21,39 @@ export const CardHeader = styled.div`
   display: flex;
   flex-direction: row;
   padding: 10px 15px 10px 15px;
-  border-bottom-color: ${props => props.color || '#333'};
+  border-radius: 5px 5px 0 0;
+  border-bottom-color: ${props => props.color || '#999'};
   border-bottom-style: solid;
   border-bottom-width: 1px;
   background-color: ${props => props.color || 'transparent'};
+  box-shadow: '0px 5px 10px rgba(0,0,0,0.2)';
 `
 
 export const CardBody = styled.div`
+
+  border: 1px solid #ccc;
+  border-top: 0px;
+  border-radius: 0 0 5px 5px;
+  box-shadow: '0px 5px 10px rgba(0,0,0,0.2)';
+`
+
+export const Body = styled.div`
   padding: 15px;
 `
 
-export const CardTitleActions = styled.div`
+export const CardFooter = styled.div`
+  border-top: 1px solid #ccc;
+  box-shadow: '0px 5px 10px rgba(0,0,0,0.2)';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
+export const CardTitleActions = styled.div`
+  font-family: Tahoma;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
 `
 
 export const Flex = styled.div`
@@ -43,7 +61,7 @@ export const Flex = styled.div`
 `
 
 const Card = (props) => {
-  const { title, children, color, actions, width } = props
+  const { title, children, color, actions, width, footer } = props
   return (
     <CardPlate color={color} width={width}>
       <CardHeader color={color}>
@@ -54,8 +72,18 @@ const Card = (props) => {
         </CardTitleActions>
       </CardHeader> 
       <CardBody>
-        {children}
+        <Body>
+          {children}
+        </Body>
+        {
+          footer && (
+            <CardFooter>
+              {footer()}
+            </CardFooter>  
+          )
+        }
       </CardBody>
+      
     </CardPlate>
   )
 }
@@ -75,6 +103,7 @@ Card.propTypes = {
   color: string,
   actions: func,
   width: number,
+  footer: func
 }
 
 Card.defaultProps = {
@@ -83,6 +112,7 @@ Card.defaultProps = {
   color: '',
   actions: () => null,
   width: 0,
+  footer: () => null
 }
 
 export default Card
