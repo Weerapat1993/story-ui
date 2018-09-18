@@ -1,5 +1,4 @@
 import { configure } from '@storybook/react';
-import { configure as viewFunction } from '@storybook/addon-viewport'
 import { setOptions } from '@storybook/addon-options'
 import { setDefaults } from '@storybook/addon-info'
 
@@ -16,8 +15,6 @@ setDefaults({
 configure(loadStories, module);
 setOptions({
   name: 'Magenta UI',
+  addonPanelInRight: true,
   sidebarAnimations: false,
-})
-viewFunction({
-  defaultViewport: 'iphone6'
 })

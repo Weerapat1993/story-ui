@@ -1,21 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import { Modal, Button } from '../index'
 import { configStories } from './config'
-import styled from 'styled-components'
 import { action } from '@storybook/addon-actions';
-
-export const BlackPage = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.2);
-  padding: 25px;
-`
 
 class App extends PureComponent {
   constructor(props) {
@@ -35,7 +21,7 @@ class App extends PureComponent {
     console.log(visible)
     return (
       <Fragment>
-        <Button title='Modal' color={'orange'} onClick={() => this.handleModal(true)} />
+        <Button title='Modal' color={'orange'} onClick={() => this.handleModal(!visible)} />
         <Modal title='Modal' visible={visible} width={300} onBlur={() => this.handleModal(false)}>
           Modal Description
         </Modal>
