@@ -1,14 +1,18 @@
 import React, { Fragment } from 'react';
+import { upperFirst } from 'lodash'
 import { action } from '@storybook/addon-actions';
 import { text, boolean } from '@storybook/addon-knobs';
 import { Button } from '../index'
 import { configStories } from './config'
 
+// Constants
+const colors = ['black', 'gray', 'green', 'orange', 'red', 'blue', 'blueviolet', 'purple', 'brown']
+
 const stories = configStories(() => (
   <Button 
     title={text('Title', 'Title')}
-    color={text('Color', 'green')} 
-    primary={boolean('Primary', true)} 
+    color={text('Color', 'black')} 
+    primary={boolean('Outline', false)} 
     onClick={action('clicked')}
   />
 ),
@@ -17,20 +21,26 @@ const stories = configStories(() => (
 () => (
   <Fragment>
     <div>
-      <Button onClick={action('clicked')}>Default</Button>
-      <Button primary onClick={action('clicked')}>Primary</Button>
-      <Button color='blue' primary onClick={action('clicked')}>Blue</Button>
-      <Button color='red' primary onClick={action('clicked')}>Red</Button>
-      <Button color='black' primary onClick={action('clicked')}>Black</Button>
-      <Button color='gray' primary onClick={action('clicked')}>Gray</Button>
+      {
+        colors.map((item, i) => (
+          (!i) ? (
+            <Button key={i} outline onClick={action('clicked')}>Default</Button>
+          ) : (
+            <Button key={i} color={item} outline onClick={action('clicked')}>{upperFirst(item)}</Button>
+          )
+        ))
+      }
     </div>
     <div>
-      <Button onClick={action('clicked')}>Default</Button>
-      <Button onClick={action('clicked')}>Primary</Button>
-      <Button color='blue' onClick={action('clicked')}>Blue</Button>
-      <Button color='red' onClick={action('clicked')}>Red</Button>
-      <Button color='black' onClick={action('clicked')}>Black</Button>
-      <Button color='gray' onClick={action('clicked')}>Gray</Button>
+      {
+        colors.map((item, i) => (
+          (!i) ? (
+            <Button key={i} color='black' onClick={action('clicked')}>Default</Button>
+          ) : (
+            <Button key={i} color={item} onClick={action('clicked')}>{upperFirst(item)}</Button>
+          )
+        ))
+      }
     </div>
   </Fragment>
 ))

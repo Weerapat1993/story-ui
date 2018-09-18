@@ -3,35 +3,43 @@ import { string, bool } from 'prop-types'
 import styled from 'styled-components'
 
 // Constants
-export const BTN_COLOR = 'green'
+export const BTN_COLOR = '#333'
 
 export const BTN = styled.button`
-  background: ${props => props.primary ? props.color : "white"};
-  color: ${props => props.primary ? "white" : props.color};
+  cursor: pointer;
+  background: ${props => !props.outline ? props.color : "white"};
+  color: ${props => !props.outline ? "white" : props.color};
   font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
+  margin: 0.5em;
+  padding: 0.5em 1em;
   border: 2px solid ${props => props.color};
-  border-radius: 3px;
+  border-radius: 8px;
+  ${props => !props.outline ? 'border-bottom: 3px solid rgba(0, 0, 0, 0.2);' : ''}
+  
+  &:hover {
+    background: ${props => props.outline ? props.color : "white"};
+    color: ${props => props.outline ? "white" : props.color};
+    border: 2px solid ${props => props.color};
+  }
 `;
 
 const Button = (props) => {
-  const { title, primary, children, color } = props
+  const { title, outline, children, color } = props
   return (
-    <BTN {...props} color={color} primary={primary}>{title || children}</BTN>
+    <BTN {...props} color={color} outline={outline}>{title || children}</BTN>
   )
 }
 
 Button.propTypes = {
   title: string,
-  primary: bool,
+  outline: bool,
   children: string,
   color: string,
 }
 
 Button.defaultProps = {
   title: '',
-  primary: false,
+  outline: false,
   children: '',
   color: BTN_COLOR,
 }

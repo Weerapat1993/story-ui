@@ -9,9 +9,11 @@ const List = styled.li`
   padding: 15px;
   margin-left: -40px;
   color: ${props => props.color};
+  background-color: ${props => props.bgColor};
+  font-family: Tahoma;
 
   &:hover {
-    background: #ddd;
+  background-color: ${props => props.highlightColor};
   }
   &:first-child {
     border-radius: 5px 5px 0 0;
@@ -30,10 +32,14 @@ const ListItem = (props) => (
 
 ListItem.propTypes = {
   color: string,
+  bgColor: string,
+  highlightColor: string,
 }
 
 ListItem.defaultProps = {
-  color: '#333'
+  color: '#333',
+  bgColor: 'transparent',
+  highlightColor: 'rgba(0, 0, 0, 0.1)'
 }
 
 export default ListItem

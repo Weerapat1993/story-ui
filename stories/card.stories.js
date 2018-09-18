@@ -5,7 +5,7 @@ import { Card } from '../index'
 import { configStories } from './config'
 
 // Constants
-const cardArr = ['red', 'green', 'blue']
+const cardArr = ['#333', 'gray', 'green', 'orange', 'red', 'blue', 'blueviolet', 'purple', 'brown']
 
 const stories = configStories(() => (
   <Card
