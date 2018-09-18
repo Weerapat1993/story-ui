@@ -21,6 +21,7 @@ const ListAnimate = posed.li({
 });
 
 const List = styled(ListAnimate)`
+  cursor: pointer;
   display: block;
   flex: 1;
   border: 1px ${props => props.borderColor} solid;
@@ -33,10 +34,6 @@ const List = styled(ListAnimate)`
   color: ${props => props.textColor};
   background-color: ${props => props.bgColor};
   font-family: Tahoma;
-
-  &:hover {
-    background-color: ${props => props.highlightColor || 'transparent'};
-  }
 `
 
 const ListItem = (props) => (

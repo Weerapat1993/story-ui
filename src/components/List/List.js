@@ -1,18 +1,16 @@
 import React from 'react'
 import { string } from 'prop-types'
-import hexToRgba from 'hex-to-rgba'
 
 const List = (props) => {
   const childrenWithExtraProp = React.Children.map(props.children, child => {
     return React.cloneElement(child, {
       borderColor: props.borderColor,
       bgColor: props.bgColor,
-      highlightColor: props.highlightColor,
       textColor: props.textColor,
     });
   });
   return (
-    <ul {...props}>
+    <ul>
       {childrenWithExtraProp}
     </ul>
   )
