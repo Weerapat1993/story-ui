@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { string, bool } from 'prop-types'
 import posed from "react-pose";
 import styled from "styled-components";
@@ -35,31 +35,18 @@ export const BTN = styled(ButtonAnimate)`
   ${props => !props.outline ? 'border-bottom: 3px solid rgba(0, 0, 0, 0.2);' : ''}
 `;
 
-class Button extends Component {
-  state = { hovering: false }
-
-  render() {
-    const { title, outline, children, color } = this.props
-    return (
-      <BTN
-      {...this.props}
+const Button = (props) => {
+  const { title, outline, children, color } = props
+  return (
+    <BTN
+      {...props}
       color={color} 
-      outline={outline}>{title || children}</BTN>
-    )
-  }
+      outline={outline}
+    >
+      {title || children}
+    </BTN>
+  )
 }
-
-// const Button = (props) => {
-//   const { title, outline, children, color } = props
-//   return (
-//     <BTN
-//       pose={this.state.hovering ? "hovered" : "idle"}
-//       onMouseEnter={() => this.setState({ hovering: true })}
-//       onMouseLeave={() => this.setState({ hovering: false })}
-//       color={color} 
-//       outline={outline}>{title || children}</BTN>
-//   )
-// }
 
 Button.propTypes = {
   title: string,
