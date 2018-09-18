@@ -18,7 +18,6 @@ class App extends PureComponent {
 
   render() {
     const { visible } = this.state
-    console.log(visible)
     return (
       <Fragment>
         <Button title='Modal' color={'orange'} onClick={() => this.handleModal(!visible)} />
