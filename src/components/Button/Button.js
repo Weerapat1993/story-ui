@@ -15,7 +15,7 @@ const ButtonAnimate = posed.button({
   },
   hover: {
     scale: 1.1,
-    boxShadow: '0px 5px 10px rgba(0,0,0,0.2)'
+    boxShadow: '0px 5px 10px rgba(0,0,0,0.2)',
   },
   press: {
     scale: 1.05,
@@ -33,10 +33,6 @@ export const BTN = styled(ButtonAnimate)`
   border: 2px solid ${props => props.color};
   border-radius: 8px;
   ${props => !props.outline ? 'border-bottom: 3px solid rgba(0, 0, 0, 0.2);' : ''}
-  
-  &:hover {
-    border-bottom: ${props => props.outline ? 2 : 3}px solid ${props => props.color};
-  }
 `;
 
 class Button extends Component {
