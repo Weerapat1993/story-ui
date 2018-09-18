@@ -1,5 +1,5 @@
 import React from 'react'
-import { string, oneOfType, node, func, element } from 'prop-types'
+import { string, oneOfType, node, func, element, number } from 'prop-types'
 import styled from 'styled-components'
 
 export const CardPlate = styled.div`
@@ -9,6 +9,7 @@ export const CardPlate = styled.div`
   border-color: ${props => props.color || '#333'};
   background-color: #fff;
   margin-bottom: 10px;
+  width: ${props => props.width ? `${props.width}px` : 'auto'};
 `
 
 export const CardTitle = styled.div`
@@ -42,9 +43,9 @@ export const Flex = styled.div`
 
 
 const Card = (props) => {
-  const { title, children, color, actions } = props
+  const { title, children, color, actions, width } = props
   return (
-    <CardPlate color={color}>
+    <CardPlate color={color} width={width}>
       <CardHeader color={color}>
         <CardTitle color={color}>{title}</CardTitle>
         <Flex />
@@ -72,14 +73,16 @@ Card.propTypes = {
     element,
   ]),
   color: string,
-  actions: func
+  actions: func,
+  width: number,
 }
 
 Card.defaultProps = {
   title: '',
   children: null,
   color: '',
-  actions: () => null
+  actions: () => null,
+  width: 0,
 }
 
 export default Card

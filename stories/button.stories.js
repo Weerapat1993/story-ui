@@ -10,8 +10,8 @@ const colors = ['black', 'gray', 'green', 'orange', 'red', 'blue', 'blueviolet',
 
 const stories = configStories(() => (
   <Button 
-    title={text('Title', 'Title')}
-    color={text('Color', 'black')} 
+    title={text('Title', 'Button')}
+    color={text('Color', '#ccc')} 
     outline={boolean('Outline', false)} 
     onClick={action('clicked')}
   />
