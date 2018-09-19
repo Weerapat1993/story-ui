@@ -3,16 +3,16 @@ import { func, number, element, node, oneOfType } from 'prop-types'
 import styled from 'styled-components'
 
 export const Column = styled.div`
-  flex: ${props => props.count};
+  flex: ${props => props.flex};
   flex-direction: column;
 `
 
-export const Col = ({ count, direction, children }) => (
-  <Column direction={direction} count={count}>{children}</Column>
+export const Col = ({ flex, children }) => (
+  <Column flex={flex}>{children}</Column>
 )
 
 Col.propTypes = {
-  count: number,
+  flex: number,
   children: oneOfType([
     func,
     element,
@@ -21,7 +21,7 @@ Col.propTypes = {
 }
 
 Col.defaultProps = {
-  count: 1,
+  flex: 1,
   children: ''
 }
 

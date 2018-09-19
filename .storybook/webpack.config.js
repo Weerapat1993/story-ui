@@ -12,7 +12,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.scss$/,
+        test: /\.css$/,
+        loaders: ["style-loader", "css-loader"],
+        include: path.resolve(__dirname, "../")
+      },
+      {
+        test: /\.sass|scss$/,
         loaders: ["style-loader", "css-loader", "sass-loader"],
         include: path.resolve(__dirname, "../")
       },

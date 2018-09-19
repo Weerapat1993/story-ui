@@ -16,8 +16,9 @@ const Plate = styled.div`
 
 const stories = configStories(() => (
   <Row>
-    <Col count={number('Flex Left', 1)} />
-    <Col count={number('Flex Right', 1)} />
+    <Col flex={number('Flex One', 1)} />
+    <Col flex={number('Flex Two', 1)} />
+    <Col flex={number('Flex Three', 1)} />
   </Row>
 ),
   'Grid', 
@@ -35,7 +36,8 @@ const stories = configStories(() => (
 `,
 () => (
   <Row>
-    <Col count={number('Flex Left', 1)}><Plate>{number('Flex Left', 1)}</Plate></Col>
-    <Col count={number('Flex Right', 1)}><Plate>{number('Flex Right', 1)}</Plate></Col>
+    <Col flex={number('Flex One', 1)}><Plate>{number('Flex One', 1)}</Plate></Col>
+    <Col flex={number('Flex Two', 1)}><Plate>{number('Flex Two', 1)}</Plate></Col>
+    <Col flex={number('Flex Three', 1)}><Plate>{number('Flex Three', 1)}</Plate></Col>
   </Row>
 ))

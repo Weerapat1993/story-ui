@@ -4,7 +4,10 @@ import styled from 'styled-components'
 
 export const RowStyle = styled.div`
   display: flex;
-  flex-direction: 'row';
+  flex-direction: column;
+  @media (min-width: 40.0rem) {
+    flex-direction: row;
+  }
 `
 
 export const Row = ({ children }) => (
