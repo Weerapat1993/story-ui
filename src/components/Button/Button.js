@@ -23,30 +23,65 @@ const ButtonAnimate = posed.button({
   }
 });
 
+const buttonSize = (props) => {
+  switch(props.size) {
+    case 'small':
+      return '0.2em 0.4em'
+    case 'medium':
+      return '0.4em 0.8em'
+    case 'large':
+      return '0.5em 1em'
+    default:
+      return '0.4em 0.8em'
+  }
+}
+
 export const BTN = styled(ButtonAnimate)`
   cursor: pointer;
   background: ${props => !props.outline ? props.color : "white"};
   color: ${props => !props.outline ? "white" : props.color};
   font-size: ${props => props.size === 'small' ? '0.8em' : '1em'};
-  ${props => props.isLink ? 'margin: 0' : 'margin: 0.5em'};
-  padding: ${props => props.size === 'small' ? '0.2em 0.4em' : '0.5em 1em'};
+  ${props => props.isActions ? 'margin: 0' : 'margin: 0.5em'};
+  padding: ${buttonSize};
   border: 2px solid ${props => props.color};
   border-radius: 8px;
-  ${props => !props.outline && !props.isLink ? 'border-bottom: 3px solid rgba(0, 0, 0, 0.2);' : ''}
+  ${props => !props.outline && !props.isActions ? 'border-bottom: 3px solid rgba(0, 0, 0, 0.2);' : ''}
+`;
+
+export const BtnNoAnimation = styled.button`
+  cursor: pointer;
+  background: ${props => !props.outline ? props.color : "white"};
+  color: ${props => !props.outline ? "white" : props.color};
+  font-size: ${props => props.size === 'small' ? '0.8em' : '1em'};
+  ${props => props.isActions ? 'margin: 0' : 'margin: 0.5em'};
+  padding: ${buttonSize};
+  border: 2px solid ${props => props.color};
+  border-radius: 8px;
+  ${props => !props.outline && !props.isActions ? 'border-bottom: 3px solid rgba(0, 0, 0, 0.2);' : ''}
 `;
 
 const Button = (props) => {
-  const { title, outline, children, color, isLink, size } = props
-  return (
+  const { title, outline, children, color, isActions, size } = props
+  return !isActions ? (
     <BTN
       {...props}
       size={size}
       color={color} 
       outline={outline}
-      isLink={isLink}
+      isActions={isActions}
     >
       {title || children}
     </BTN>
+  ) : (
+    <BtnNoAnimation
+      {...props}
+      size={size}
+      color={color} 
+      outline={outline}
+      isActions={isActions}
+    >
+      {title || children}
+    </BtnNoAnimation>
   )
 }
 
@@ -55,7 +90,8 @@ Button.propTypes = {
   outline: bool,
   children: string,
   color: string,
-  size: oneOf(['small', 'medium', 'large'])
+  size: oneOf(['small', 'medium', 'large']),
+  isActions: bool,
 }
 
 Button.defaultProps = {
@@ -64,6 +100,7 @@ Button.defaultProps = {
   children: '',
   color: BTN_COLOR,
   size: 'medium',
+  isActions: false,
 }
 
 export default Button

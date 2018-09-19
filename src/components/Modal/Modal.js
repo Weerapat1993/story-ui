@@ -47,7 +47,7 @@ const Modal = ({ onBlur, width, children, title, visible }) => (
         title={title}
         width={width}
         color='#333'
-        actions={() => <Button title='X' size='small' isLink onClick={onBlur} />}
+        actions={() => <Button title='X' size='small' isActions onClick={onBlur} />}
         footer={() => <Button title='OK' color={'green'} onClick={onBlur} />}
       >
         {children}

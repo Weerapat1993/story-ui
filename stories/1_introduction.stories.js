@@ -7,6 +7,7 @@ import { withDocs } from 'storybook-readme';
 import { Button } from '..'
 
 // Constants
+const colors = ['black', 'gray', 'green', 'orange', 'red', 'blue', 'blueviolet', 'purple', 'brown']
 const BTN_COLOR = '#00aced'
 const components = [
   'Button', 
@@ -79,8 +80,8 @@ stories
     <Container>
       <Marked md={'# Components'} />
       {
-        components.map((item) => (
-          <Button key={item} color={BTN_COLOR} onClick={linkTo(item)} title={item} />
+        components.map((item, i) => (
+          <Button key={item} color={colors[i]} onClick={linkTo(item)} title={item} />
         ))
       }
     </Container>

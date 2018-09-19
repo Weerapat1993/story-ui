@@ -20,7 +20,7 @@ const stories = configStories(() => (
     title={text('Title', 'Button')}
     size={select('Size', options, 'medium')}
     color={text('Color', '#ccc')} 
-    isLink={boolean('isLink', false)}
+    isActions={boolean('Btn Actions', false)}
     outline={boolean('Outline', false)} 
     onClick={action('clicked')}
   />
