@@ -9,35 +9,50 @@ import { Card } from '../Card'
 const Fade = posed.div({
   fadeIn: {
     opacity: 1,
-    height: '90%',
     transition: tween
   },
   fadeOut: {
     opacity: 0,
-    height: '0%',
     transition: tween
   }
 });
 
 export const BlackPage = styled(Fade)`
-  position: absolute;
+  display: ${props => props.visible ? 'block' : 'none'};
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  overflow-y: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: rgba(0, 0, 0, 0.2);
   padding: 25px;
 `
 
+export const ModalMain = styled.section`
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: auto;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+`
+
 const Modal = ({ onBlur, width, children, title, visible }) => (
-  <BlackPage pose={visible ? "fadeIn" : "fadeOut"} onClick={onBlur}>
-    <Card title={title} width={width} color='#333' footer={() => <Button title='OK' color={'green'} onClick={onBlur} />}>
-      {children}
-    </Card>
+  <BlackPage pose={visible ? "fadeIn" : "fadeOut"} visible={visible}>
+    <ModalMain>
+      <Card 
+        title={title}
+        width={width}
+        color='#333'
+        actions={() => <Button title='X' size='small' isLink onClick={onBlur} />}
+        footer={() => <Button title='OK' color={'green'} onClick={onBlur} />}
+      >
+        {children}
+      </Card>
+    </ModalMain>
   </BlackPage>
 )
 

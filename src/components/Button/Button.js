@@ -1,5 +1,5 @@
 import React from 'react'
-import { string, bool } from 'prop-types'
+import { string, bool, oneOf } from 'prop-types'
 import posed from "react-pose";
 import styled from "styled-components";
 
@@ -27,21 +27,23 @@ export const BTN = styled(ButtonAnimate)`
   cursor: pointer;
   background: ${props => !props.outline ? props.color : "white"};
   color: ${props => !props.outline ? "white" : props.color};
-  font-size: 1em;
-  margin: 0.5em;
-  padding: 0.5em 1em;
+  font-size: ${props => props.size === 'small' ? '0.8em' : '1em'};
+  ${props => props.isLink ? 'margin: 0' : 'margin: 0.5em'};
+  padding: ${props => props.size === 'small' ? '0.2em 0.4em' : '0.5em 1em'};
   border: 2px solid ${props => props.color};
   border-radius: 8px;
-  ${props => !props.outline ? 'border-bottom: 3px solid rgba(0, 0, 0, 0.2);' : ''}
+  ${props => !props.outline && !props.isLink ? 'border-bottom: 3px solid rgba(0, 0, 0, 0.2);' : ''}
 `;
 
 const Button = (props) => {
-  const { title, outline, children, color } = props
+  const { title, outline, children, color, isLink, size } = props
   return (
     <BTN
       {...props}
+      size={size}
       color={color} 
       outline={outline}
+      isLink={isLink}
     >
       {title || children}
     </BTN>
@@ -53,6 +55,7 @@ Button.propTypes = {
   outline: bool,
   children: string,
   color: string,
+  size: oneOf(['small', 'medium', 'large'])
 }
 
 Button.defaultProps = {
@@ -60,6 +63,7 @@ Button.defaultProps = {
   outline: false,
   children: '',
   color: BTN_COLOR,
+  size: 'medium',
 }
 
 export default Button

@@ -12,6 +12,8 @@ const components = [
   'Button', 
   'Card',
   'Grid',
+  'List',
+  'Modal',
 ]
 
 // Getting Started
