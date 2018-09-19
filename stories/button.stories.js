@@ -59,9 +59,9 @@ const stories = configStories(() => (
 />
     <br />
     <div>
-      <Button size='small' onClick={action('clicked')}>Small</Button>
-      <Button size='medium' onClick={action('clicked')}>Medium</Button>
-      <Button size='large' onClick={action('clicked')}>Large</Button>
+      <Button size='small' color='blueviolet' onClick={action('clicked')}>Small</Button>
+      <Button size='medium' color='blueviolet' onClick={action('clicked')}>Medium</Button>
+      <Button size='large' color='blueviolet' onClick={action('clicked')}>Large</Button>
     </div>
   </Fragment>
 ))
