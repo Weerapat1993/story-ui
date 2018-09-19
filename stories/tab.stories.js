@@ -1,10 +1,6 @@
-import React, { Fragment } from 'react';
-import { text } from '@storybook/addon-knobs';
+import React from 'react';
 import { Tabs } from '../index'
 import { configStories } from './config'
-
-// Constants
-const cardArr = ['#333', 'gray', 'green', 'orange', 'red', 'blue', 'blueviolet', 'purple', 'brown']
 
 const stories = configStories(() => (
   <Tabs>

@@ -7,6 +7,7 @@
 }
 
 .tab-list-item {
+  cursor: pointer;
   display: inline-block;
   list-style: none;
   margin-bottom: -1px;
@@ -21,6 +22,7 @@
 }
 
 .tab-list-active {
+  cursor: pointer;
   background-color: #a90006;
   border: solid #d8d8d8;
   border-width: 1px 1px 0 1px;
@@ -35,4 +37,5 @@
   border: 1px solid #d8d8d8;
   background: white;
   padding: 30px;
+  border-radius: 0 0 5px 5px;
 }
