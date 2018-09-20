@@ -49,7 +49,7 @@ export const BTN = styled(ButtonAnimate)`
 `;
 
 export const BtnNoAnimation = styled.button`
-  cursor: pointer;
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
   background: ${props => !props.outline ? props.color : "white"};
   color: ${props => !props.outline ? "white" : props.color};
   font-size: ${props => props.size === 'small' ? '0.8em' : '1em'};
@@ -58,11 +58,13 @@ export const BtnNoAnimation = styled.button`
   border: 2px solid ${props => props.color};
   border-radius: 8px;
   ${props => !props.outline && !props.isActions ? 'border-bottom: 3px solid rgba(0, 0, 0, 0.2);' : ''}
+  ${props => !props.outline && props.disabled ? 'border-bottom: 3px solid rgba(0, 0, 0, 0.2);' : ''}
+  opacity: ${props => props.disabled ? '0.5' : '1'}
 `;
 
 const Button = (props) => {
-  const { title, outline, children, color, isActions, size } = props
-  return !isActions ? (
+  const { title, outline, children, color, isActions, size, disabled, onClick } = props
+  return !isActions && !disabled ? (
     <BTN
       {...props}
       size={size}
@@ -79,6 +81,8 @@ const Button = (props) => {
       color={color} 
       outline={outline}
       isActions={isActions}
+      disabled={disabled}
+      onClick={disabled ? () => null : onClick}
     >
       {title || children}
     </BtnNoAnimation>

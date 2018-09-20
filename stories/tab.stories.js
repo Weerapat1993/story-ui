@@ -5,13 +5,13 @@ import { configStories } from './config'
 const stories = configStories(() => (
   <Tabs>
     <div label="Gator">
-      See ya later, <em>Alligator</em>!
+      Gator
     </div>
     <div label="Croc">
-      After &apos;while, <em>Crocodile</em>!
+      Crocodile
     </div>
     <div label="Sarcosuchus">
-      Nothing to see here, this tab is <em>extinct</em>!
+      Sarcosuchus
     </div>
   </Tabs>
 ),
@@ -20,13 +20,13 @@ const stories = configStories(() => (
 () => (
   <Tabs>
     <div label="Gator">
-      See ya later, <em>Alligator</em>!
+      Gator
     </div>
     <div label="Croc">
-      After &apos;while, <em>Crocodile</em>!
+      Crocodile
     </div>
     <div label="Sarcosuchus">
-      Nothing to see here, this tab is <em>extinct</em>!
+      Sarcosuchus
     </div>
   </Tabs>
 ))
