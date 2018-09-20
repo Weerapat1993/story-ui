@@ -2,6 +2,7 @@ import React from 'react'
 import { string } from 'prop-types'
 import posed from "react-pose";
 import styled from 'styled-components'
+import { FONT_BASE } from '../../styles/variables'
 
 const ListAnimate = posed.li({
   hoverable: true,
@@ -33,7 +34,7 @@ const List = styled(ListAnimate)`
   margin-right: 20px;
   color: ${props => props.textColor};
   background-color: ${props => props.bgColor};
-  font-family: Tahoma;
+  font-family: ${FONT_BASE};
 `
 
 const ListItem = (props) => (

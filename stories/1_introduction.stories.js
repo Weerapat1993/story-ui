@@ -15,6 +15,8 @@ const components = [
   'Grid',
   'List',
   'Modal',
+  'Tabs',
+  'Tool Tips',
 ]
 
 // Getting Started

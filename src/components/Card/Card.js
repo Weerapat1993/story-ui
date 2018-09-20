@@ -1,6 +1,7 @@
 import React from 'react'
 import { string, oneOfType, node, func, element, number } from 'prop-types'
 import styled from 'styled-components'
+import { FONT_BASE } from '../../styles/variables'
 
 export const CardPlate = styled.div`
   border-radius: 5px;
@@ -11,7 +12,7 @@ export const CardPlate = styled.div`
 `
 
 export const CardTitle = styled.div`
-  font-family: Tahoma;
+  font-family: ${FONT_BASE};
   font-size: 16px;
   font-weight: bold;
   color: ${props => props.color ? '#fff' : '#333'};
@@ -50,7 +51,7 @@ export const CardFooter = styled.div`
 `
 
 export const CardTitleActions = styled.div`
-  font-family: Tahoma;
+  font-family: ${FONT_BASE};
   font-size: 16px;
   font-weight: bold;
   color: white;
