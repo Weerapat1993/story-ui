@@ -65,6 +65,7 @@ class App extends PureComponent {
             </Col>
           </Row>
         </FormControl>
+        <Button type='submit' color='green' title='Submit' />
       </Form>
     )
   }
@@ -75,7 +76,6 @@ const stories = configStories(() => (
     <FormControl label={text('Label', 'มูลค่าของกระเช้าที่ลดสูงสุด 35%')}>
       <input type='number' max={35} placeholder={text('Placeholder', 'Please select number only')} />
     </FormControl>
-    <Button type='submit' color='green' title='Submit' />
   </Form>
 ),
   'Form', 
