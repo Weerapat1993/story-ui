@@ -15,6 +15,7 @@ const TabListItem = styled.li`
   background: #f0f0f0;
   text-align: center;
   font-family: ${FONT_BASE};
+  font-weight: bold;
   flex: 1;
 `
 

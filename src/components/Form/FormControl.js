@@ -8,7 +8,6 @@ const Label = styled.div`
   display: flex;
   flex: 1;
   align-items: center;
-  font-weight: bold;
   font-size: 13px;
   padding: 5px;
   
