@@ -12,6 +12,7 @@ const BTN_COLOR = '#00aced'
 const components = [
   'Button', 
   'Card',
+  'Form',
   'Grid',
   'List',
   'Modal',

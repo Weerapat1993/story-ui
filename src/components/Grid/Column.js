@@ -7,9 +7,12 @@ export const Column = styled.div`
   flex-direction: column;
 `
 
-export const Col = ({ flex, children }) => (
-  <Column flex={flex}>{children}</Column>
-)
+export const Col = (props) => {
+  const { flex, children } = props
+  return (
+    <Column flex={flex}>{children}</Column>
+  )
+}
 
 Col.propTypes = {
   flex: number,

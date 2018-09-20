@@ -10,8 +10,8 @@ export const RowStyle = styled.div`
   }
 `
 
-export const Row = ({ children }) => (
-  <RowStyle>{children}</RowStyle>
+export const Row = (props) => (
+  <RowStyle {...props}>{props.children}</RowStyle>
 )
 
 Row.propTypes = {
