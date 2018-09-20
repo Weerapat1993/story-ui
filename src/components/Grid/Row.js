@@ -10,7 +10,17 @@ export const RowStyle = styled.div`
   }
 `
 
-export const Row = (props) => (
+export const RowStyleReverse = styled.div`
+  display: flex;
+  flex-direction: row;
+  @media (min-width: 40.0rem) {
+    flex-direction: column;
+  }
+`
+
+export const Row = (props) => props.reverse ? (
+  <RowStyleReverse {...props}>{props.children}</RowStyleReverse>
+) : (
   <RowStyle {...props}>{props.children}</RowStyle>
 )
 
