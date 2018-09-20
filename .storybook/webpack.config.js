@@ -9,6 +9,9 @@ const path = require("path");
 // to "React Create App". This only has babel loader to load JavaScript.
 
 module.exports = {
+  entry: [
+    require.resolve('react-error-overlay'),
+  ],
   module: {
     rules: [
       {

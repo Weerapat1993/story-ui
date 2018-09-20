@@ -57,6 +57,7 @@
     "jest-styled-components": "^6.2.0",
     "node-sass": "^4.9.3",
     "react-element-to-jsx-string": "^14.0.1",
+    "react-error-overlay": "^4.0.1",
     "react-test-renderer": "^16.5.1",
     "regenerator-runtime": "^0.12.1",
     "sass-loader": "^7.1.0",
