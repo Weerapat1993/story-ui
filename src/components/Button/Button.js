@@ -59,7 +59,7 @@ export const BtnNoAnimation = styled.button`
   border-radius: 8px;
   ${props => !props.outline && !props.isActions ? 'border-bottom: 3px solid rgba(0, 0, 0, 0.2);' : ''}
   ${props => !props.outline && props.disabled ? 'border-bottom: 3px solid rgba(0, 0, 0, 0.2);' : ''}
-  opacity: ${props => props.disabled ? '0.5' : '1'}
+  opacity: ${props => props.disabled ? '0.5' : '1'};
 `;
 
 const Button = (props) => {
