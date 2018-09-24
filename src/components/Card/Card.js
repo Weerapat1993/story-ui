@@ -6,8 +6,7 @@ export const CardPlate = styled.div`
   border-radius: 5px;
   background-color: #fff;
   margin-bottom: 15px;
-  width: auto;
-  max-width: ${props => props.width ? `${props.width}px` : 'auto'};
+  width: ${props => props.width ? `${props.width}px` : 'auto'};
   box-shadow: '0px 5px 10px rgba(0,0,0,0.2)';
 `
 
@@ -31,6 +30,7 @@ export const CardHeader = styled.div`
 
 export const CardBody = styled.div`
   border: ${props => props.isBorder ? 1 : 0}px solid #ccc;
+  width: auto;
   border-top: 0px;
   border-radius: 0 0 5px 5px;
   box-shadow: '0px 5px 10px rgba(0,0,0,0.2)';
@@ -38,6 +38,7 @@ export const CardBody = styled.div`
 
 export const Body = styled.div`
   padding: 15px;
+  width: auto;
 `
 
 export const CardFooter = styled.div`
@@ -116,7 +117,7 @@ Card.defaultProps = {
   color: '',
   actions: () => null,
   width: 0,
-  footer: () => null,
+  footer: null,
   isBorder: true,
 }
 

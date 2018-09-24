@@ -54,7 +54,6 @@ export const ModalMain = styled.section`
   transform: translate(-50%,-50%);
 `
 
-
 const Modal = ({ onClose, width, children, title, visible, footer }) => (
   <BlackPage pose={visible ? "fadeIn" : "fadeOut"} visible={visible}>
     <ModalMain>
@@ -101,7 +100,7 @@ Modal.defaultProps = {
   title: '',
   visible: false,
   children: null,
-  footer: () => null,
+  footer: null,
 }
 
 export default Modal

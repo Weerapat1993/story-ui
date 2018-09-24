@@ -1,23 +1,22 @@
 import React, { PureComponent, Fragment } from 'react';
 import styled from 'styled-components'
-import { Modal, Button } from '../index'
-import { configStories, styles } from './config'
-import { action } from '@storybook/addon-actions';
-
-const H2 = styled.h2`
-  color: ${props => props.color || '#333'};
-  font-size: ${props => props.size ? `${props.size}px` : '24px'};
-  font-weight: ${props => props.type ? props.type : 'normal'};
-  ${props => props.align ? `text-align: ${props.align}` : ''};
-`
+import { Modal, Button, Row, Col, H2 } from '../index'
+import { configStories } from './config'
 
 const Shadow = styled.div`
   height: 30px;
-  width: auto;
-  max-width: 760px;
+  flex: 1;
   margin: -15px;
   margin-top: 30px;
   background-image: linear-gradient(to bottom, rgba(226, 226, 226, 0), #b1b1b1);
+`
+
+const Flex = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `
 
 class App extends PureComponent {
@@ -38,7 +37,7 @@ class App extends PureComponent {
     return (
       <Fragment>
         <Button title='Modal' color={'orange'} onClick={() => this.handleModal(!visible)} />
-        <Modal 
+        <Modal
           visible={visible} 
           width={760} 
           onClose={() => this.handleModal(false)}
@@ -54,13 +53,17 @@ class App extends PureComponent {
             </div>
           )}
         >
-          <div style={{ textAlign: 'center' }}>
-            <H2 type='bold'>ขออภัยค่ะ :</H2>
-            <H2 type='bold' color='red'>กรุณาชำระเงิน ในตะกร้านี้ก่อนค่ะ</H2>
-            <p>
-              * สินค้านี้ใช้เวลา 4 วัน ในการดำเนินการจัดส่ง  จึงไม่สามารถจัดส่งและชำระเงิน พร้อมกับสินค้าที่คุณเลือกก่อนหน้านี้ได้
-            </p>
-          </div>
+          <Flex>
+            <H2 align='center' type='bold'>ขออภัยค่ะ :</H2>
+            <H2 align='center' type='bold' color='red'>กรุณาชำระเงิน ในตะกร้านี้ก่อนค่ะ</H2>
+            <Row responsive={false}>
+              <Col />
+              <p style={{ textAlign: 'center' }}>
+                * สินค้านี้ใช้เวลา 4 วัน ในการดำเนินการจัดส่ง  จึงไม่สามารถจัดส่งและชำระเงิน พร้อมกับสินค้าที่คุณเลือกก่อนหน้านี้ได้
+              </p>
+              <Col />
+            </Row>
+          </Flex>
           <Shadow />
         </Modal>
       </Fragment>
@@ -68,10 +71,33 @@ class App extends PureComponent {
   }
 }
 
+class Example extends PureComponent {
+  state = { visible: false }
+
+  handleModal = (visible) => {
+    this.setState({ visible })
+  }
+
+  render() {
+    const { visible } = this.state
+    return (
+      <Fragment>
+        <Button title='Modal' color={'orange'} onClick={() => this.handleModal(!visible)} />
+        <Modal
+          title='Modal'
+          visible={visible} 
+          width={760} 
+          onClose={() => this.handleModal(false)}
+        >
+          Modal Description
+        </Modal>
+      </Fragment>
+    )
+  }
+}
+
 const stories = configStories(() => (
-  <Modal title='Modal' visible={false} width={300} onClose={action('Click')}>
-    Modal Description
-  </Modal>
+  <Example />
 ),
   'Modal', 
   'String or React Element with docs about my component', 
