@@ -1,30 +1,12 @@
 import React from 'react'
-import { string, bool, oneOf } from 'prop-types'
-import posed from "react-pose";
-import styled from "styled-components";
+import { string, bool, oneOf, func, number } from 'prop-types'
+import styled from 'styled-components'
 
 // Constants
 export const BTN_COLOR = '#333'
 
-const ButtonAnimate = posed.button({
-  hoverable: true,
-  pressable: true,
-  init: {
-    scale: 1,
-    boxShadow: '0px 0px 0px rgba(0,0,0,0)'
-  },
-  hover: {
-    scale: 1.1,
-    boxShadow: '0px 5px 10px rgba(0,0,0,0.2)',
-  },
-  press: {
-    scale: 1.05,
-    boxShadow: '0px 2px 5px rgba(0,0,0,0.1)'
-  }
-});
-
 const buttonSize = (props) => {
-  switch(props.size) {
+  switch (props.size) {
     case 'small':
       return '0.2em 0.4em'
     case 'medium':
@@ -36,35 +18,39 @@ const buttonSize = (props) => {
   }
 }
 
-export const BTN = styled(ButtonAnimate)`
+export const BTN = styled.button`
   cursor: pointer;
-  background: ${props => !props.outline ? props.color : "white"};
-  color: ${props => !props.outline ? "white" : props.color};
+  width: ${props => props.width ? `${props.width}px` : 'auto'};
+  height: ${props => props.height ? `${props.height}px` : 'auto'};
+  background: ${props => !props.outline ? props.color : 'white'};
+  color: ${props => !props.outline ? props.textColor : props.color};
   font-size: ${props => props.size === 'small' ? '0.8em' : '1em'};
   ${props => props.isActions ? 'margin: 0' : 'margin: 0.5em'};
-  padding: ${buttonSize};
+  padding: ${props => props.padding || buttonSize};
   border: 2px solid ${props => props.color};
   border-radius: 8px;
   ${props => !props.outline && !props.isActions ? 'border-bottom: 3px solid rgba(0, 0, 0, 0.2);' : ''}
 `;
 
 export const BtnNoAnimation = styled.button`
-  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
-  background: ${props => !props.outline ? props.color : "white"};
-  color: ${props => !props.outline ? "white" : props.color};
+  cursor: ${props => props.disabled || props.loading ? 'not-allowed' : 'pointer'};
+  width: ${props => props.width ? `${props.width}px` : 'auto'};
+  height: ${props => props.height ? `${props.height}px` : 'auto'};
+  background: ${props => !props.outline ? props.color : 'white'};
+  color: ${props => !props.outline ? props.textColor : props.color};
   font-size: ${props => props.size === 'small' ? '0.8em' : '1em'};
   ${props => props.isActions ? 'margin: 0' : 'margin: 0.5em'};
-  padding: ${buttonSize};
+  padding: ${props => props.padding || buttonSize};
   border: 2px solid ${props => props.color};
   border-radius: 8px;
   ${props => !props.outline && !props.isActions ? 'border-bottom: 3px solid rgba(0, 0, 0, 0.2);' : ''}
-  ${props => !props.outline && props.disabled ? 'border-bottom: 3px solid rgba(0, 0, 0, 0.2);' : ''}
+  ${props => !props.outline && (props.disabled || props.loading) ? 'border-bottom: 3px solid rgba(0, 0, 0, 0.2);' : ''}
   opacity: ${props => props.disabled ? '0.5' : '1'};
 `;
 
 const Button = (props) => {
-  const { title, outline, children, color, isActions, size, disabled, onClick } = props
-  return !isActions && !disabled ? (
+  const { title, outline, children, color, isActions, size, disabled, onClick, loading } = props
+  return !isActions && !disabled && !loading ? (
     <BTN
       {...props}
       size={size}
@@ -84,7 +70,7 @@ const Button = (props) => {
       disabled={disabled}
       onClick={disabled ? () => null : onClick}
     >
-      {title || children}
+      {loading ? 'Lodaing ...' : title || children}
     </BtnNoAnimation>
   )
 }
@@ -94,8 +80,15 @@ Button.propTypes = {
   outline: bool,
   children: string,
   color: string,
+  textColor: string,
+  padding: string,
   size: oneOf(['small', 'medium', 'large']),
   isActions: bool,
+  disabled: bool,
+  loading: bool,
+  onClick: func,
+  width: number,
+  height: number,
 }
 
 Button.defaultProps = {
@@ -103,8 +96,15 @@ Button.defaultProps = {
   outline: false,
   children: '',
   color: BTN_COLOR,
+  textColor: 'white',
   size: 'medium',
+  padding: '',
   isActions: false,
+  disabled: false,
+  loading: false,
+  onClick: () => null,
+  width: 0,
+  height: 0,
 }
 
 export default Button

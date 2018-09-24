@@ -1,18 +1,17 @@
 import React from 'react'
-import { string, oneOfType, node, func, element, number } from 'prop-types'
+import { string, oneOfType, node, func, element, number, bool } from 'prop-types'
 import styled from 'styled-components'
-import { FONT_BASE } from '../../styles/variables'
 
 export const CardPlate = styled.div`
   border-radius: 5px;
   background-color: #fff;
   margin-bottom: 15px;
-  width: ${props => props.width ? `${props.width}px` : 'auto'};
+  width: auto;
+  max-width: ${props => props.width ? `${props.width}px` : 'auto'};
   box-shadow: '0px 5px 10px rgba(0,0,0,0.2)';
 `
 
 export const CardTitle = styled.div`
-  font-family: ${FONT_BASE};
   font-size: 16px;
   font-weight: bold;
   color: ${props => props.color ? '#fff' : '#333'};
@@ -31,8 +30,7 @@ export const CardHeader = styled.div`
 `
 
 export const CardBody = styled.div`
-
-  border: 1px solid #ccc;
+  border: ${props => props.isBorder ? 1 : 0}px solid #ccc;
   border-top: 0px;
   border-radius: 0 0 5px 5px;
   box-shadow: '0px 5px 10px rgba(0,0,0,0.2)';
@@ -51,10 +49,10 @@ export const CardFooter = styled.div`
 `
 
 export const CardTitleActions = styled.div`
-  font-family: ${FONT_BASE};
   font-size: 16px;
   font-weight: bold;
   color: white;
+  padding: ${props => props.padding ? `${props.padding}px` : '0'};
 `
 
 export const Flex = styled.div`
@@ -62,23 +60,27 @@ export const Flex = styled.div`
 `
 
 const Card = (props) => {
-  const { title, children, color, actions, width, footer } = props
+  const { title, children, color, actions, width, footer, isBorder } = props
   return (
     <CardPlate color={color} width={width}>
-      <CardHeader color={color}>
-        <CardTitle color={color}>{title}</CardTitle>
-        <Flex />
-        <CardTitleActions>
-          {actions()}
-        </CardTitleActions>
-      </CardHeader> 
-      <CardBody>
+      {
+        title && (
+          <CardHeader color={color}>
+            <CardTitle color={color}>{title}</CardTitle>
+            <Flex />
+            <CardTitleActions>
+              {actions()}
+            </CardTitleActions>
+          </CardHeader> 
+        )
+      }
+      <CardBody isBorder={isBorder}>
         <Body>
           {children}
         </Body>
         {
           footer && (
-            <CardFooter>
+            <CardFooter isBorder={isBorder}>
               {footer()}
             </CardFooter>  
           )
@@ -104,7 +106,8 @@ Card.propTypes = {
   color: string,
   actions: func,
   width: number,
-  footer: func
+  footer: func,
+  isBorder: bool,
 }
 
 Card.defaultProps = {
@@ -113,7 +116,8 @@ Card.defaultProps = {
   color: '',
   actions: () => null,
   width: 0,
-  footer: () => null
+  footer: () => null,
+  isBorder: true,
 }
 
 export default Card

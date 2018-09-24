@@ -5,6 +5,7 @@ import { tween } from "popmotion";
 import { func, number, string, element, oneOfType, bool, node } from 'prop-types'
 import { Button } from '../Button'
 import { Card } from '../Card'
+import BLACK_CLOSE_MODAL from './assets/images/black-close-modal.png'
 
 const Fade = posed.div({
   fadeIn: {
@@ -17,6 +18,19 @@ const Fade = posed.div({
   }
 });
 
+const styles = {
+  size: (width, height) => ({
+    width,
+    height: height || width
+  }),
+  textRight: {
+    textAlign: 'right',
+  },
+  padding: (value) => ({
+    padding: 30,
+  })
+}
+
 export const BlackPage = styled(Fade)`
   display: ${props => props.visible ? 'block' : 'none'};
   position: fixed;
@@ -24,7 +38,7 @@ export const BlackPage = styled(Fade)`
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(51, 51, 51, 0.8);
   padding: 25px;
 `
 
@@ -40,16 +54,27 @@ export const ModalMain = styled.section`
   transform: translate(-50%,-50%);
 `
 
-const Modal = ({ onBlur, width, children, title, visible }) => (
+
+const Modal = ({ onClose, width, children, title, visible, footer }) => (
   <BlackPage pose={visible ? "fadeIn" : "fadeOut"} visible={visible}>
     <ModalMain>
-      <Card 
+      <Card
+        isBorder={false}
         title={title}
         width={width}
         color='#333'
-        actions={() => <Button title='X' size='small' isActions onClick={onBlur} />}
-        footer={() => <Button title='OK' color={'green'} onClick={onBlur} />}
+        actions={() => <Button title='X' size='small' isActions onClick={onClose} />}
+        footer={footer}
       >
+        {
+          !title && (
+            <div style={styles.textRight}>
+              <Button color='white' size='small' isActions onClick={onClose}>
+                <img src={BLACK_CLOSE_MODAL} alt='Close Modal' style={styles.size(15)} />
+              </Button>
+            </div>
+          )
+        }
         {children}
       </Card>
     </ModalMain>
@@ -58,7 +83,7 @@ const Modal = ({ onBlur, width, children, title, visible }) => (
 
 
 Modal.propTypes = {
-  onBlur: func,
+  onClose: func,
   width: number,
   title: string,
   visible: bool,
@@ -66,15 +91,17 @@ Modal.propTypes = {
     func,
     element,
     node,
-  ])
+  ]),
+  footer: func,
 }
 
 Modal.defaultProps = {
-  onBlur: () => null,
+  onClose: () => null,
   width: 0,
-  title: 'Modal',
+  title: '',
   visible: false,
   children: null,
+  footer: () => null,
 }
 
 export default Modal
