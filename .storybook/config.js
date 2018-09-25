@@ -18,6 +18,6 @@ setDefaults({
 configure(loadStories, module);
 setOptions({
   name: 'Magenta UI',
-  addonPanelInRight: true,
+  addonPanelInRight: false,
   sidebarAnimations: false,
 })

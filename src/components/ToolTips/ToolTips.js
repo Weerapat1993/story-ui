@@ -10,35 +10,40 @@ const Tips = styled.div`
 
 const TipsPopover = styled.span`
   visibility: hidden;
-  width: 120px;
-  background-color: #000;
-  color: #fff;
+  width: 160px;
+  height: 46px;
+  background-color: #fff;
+  color: #333;
   text-align: center;
   border-radius: 6px;
   padding: 5px 0;
   position: absolute;
   z-index: 1;
-  bottom: 125%;
-  left: 50%;
+  bottom: 0%;
+  left: -150%;
   margin-left: -60px;
   opacity: 0;
   transition: opacity 0.3s;
   font-family: ${FONT_BASE};
+  box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
+  border: 1px solid #eee;
+  border-bottom: 0px solid #eee;
 
   &::after {
     content: "";
     position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
+    top: 25%;
+    right: -12%;
+    transform: rotate(-90deg);
+    margin-left: -10px;
+    border-width: 10px;
     border-style: solid;
-    border-color: #000 transparent transparent transparent;
+    border-color: #fff transparent transparent transparent;
   }
 
   ${Tips}:hover & {
     visibility: visible;
-    opacity: 0.9;
+    opacity: 1;
   }
 `
 
