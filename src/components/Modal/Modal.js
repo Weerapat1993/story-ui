@@ -1,37 +1,26 @@
 import React from 'react'
 import posed from "react-pose";
 import styled from "styled-components";
-import { tween } from "popmotion";
 import { func, number, string, element, oneOfType, bool, node } from 'prop-types'
 import { Button } from '../Button'
 import { Card } from '../Card'
 import BLACK_CLOSE_MODAL from './assets/images/black-close-modal.png'
 
-const Fade = posed.div({
+// Animations
+const Animation = {
   fadeIn: {
     opacity: 1,
-    transition: tween
+    transition: { duration: 500 }
   },
   fadeOut: {
     opacity: 0,
-    transition: tween
+    transition: { duration: 500 }
   }
-});
-
-const styles = {
-  size: (width, height) => ({
-    width,
-    height: height || width
-  }),
-  textRight: {
-    textAlign: 'right',
-  },
-  padding: (value) => ({
-    padding: 30,
-  })
 }
 
-export const BlackPage = styled(Fade)`
+const BlackPageFade = posed.div(Animation);
+
+export const BlackPage = styled(BlackPageFade)`
   display: ${props => props.visible ? 'block' : 'none'};
   position: fixed;
   top: 0;
@@ -41,7 +30,6 @@ export const BlackPage = styled(Fade)`
   background-color: rgba(51, 51, 51, 0.8);
   padding: 25px;
 `
-
 export const ModalMain = styled.section`
   position: fixed;
   display: flex;
@@ -53,6 +41,15 @@ export const ModalMain = styled.section`
   left:50%;
   transform: translate(-50%,-50%);
 `
+const styles = {
+  size: (width, height) => ({
+    width,
+    height: height || width
+  }),
+  textRight: {
+    textAlign: 'right',
+  }
+}
 
 const Modal = ({ onClose, width, children, title, visible, footer }) => (
   <BlackPage pose={visible ? "fadeIn" : "fadeOut"} visible={visible}>
