@@ -18,6 +18,7 @@ const components = [
   'Modal',
   'Tabs',
   'Tool Tips',
+  'Typography',
 ]
 
 // Getting Started
