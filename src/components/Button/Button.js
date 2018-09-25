@@ -1,9 +1,27 @@
 import React from 'react'
 import { string, bool, oneOf, func, number } from 'prop-types'
+import posed from "react-pose";
 import styled from 'styled-components'
 
 // Constants
 export const BTN_COLOR = '#333'
+
+const ButtonAnimate = posed.button({
+  hoverable: true,
+  pressable: true,
+  init: {
+    scale: 1,
+    boxShadow: '0px 0px 0px rgba(0,0,0,0)'
+  },
+  hover: {
+    scale: 1.1,
+    boxShadow: '0px 5px 10px rgba(0,0,0,0.2)',
+  },
+  press: {
+    scale: 1.05,
+    boxShadow: '0px 2px 5px rgba(0,0,0,0.1)'
+  }
+});
 
 const buttonSize = (props) => {
   switch (props.size) {
@@ -18,7 +36,7 @@ const buttonSize = (props) => {
   }
 }
 
-export const BTN = styled.button`
+export const BTN = styled(ButtonAnimate)`
   cursor: pointer;
   width: ${props => props.width ? `${props.width}px` : 'auto'};
   height: ${props => props.height ? `${props.height}px` : 'auto'};
