@@ -1,15 +1,31 @@
 import React from 'react'
-import { oneOfType, func, element, node, string } from 'prop-types'
+import { oneOfType, func, element, node, string, bool } from 'prop-types'
+import posed from 'react-pose'
+import { tween } from 'popmotion'
 import styled from 'styled-components'
 import { FONT_BASE } from '../../styles/variables'
+
+// Animations
+const Animation = posed.span({
+  fadeIn: {
+    opacity: 1,
+    width: 160,
+    transition: tween,
+  },
+  fadeOut: {
+    opacity: 0,
+    width: 0,
+    transition: tween,
+  }
+})
+
 
 const Tips = styled.div`
   position: relative;
   display: inline-block;
 `
 
-const TipsPopover = styled.span`
-  visibility: hidden;
+const TipsPopover = styled(Animation)`
   width: 160px;
   height: 46px;
   background-color: #fff;
@@ -20,9 +36,8 @@ const TipsPopover = styled.span`
   position: absolute;
   z-index: 1;
   bottom: 0%;
-  left: -150%;
+  left: -160%;
   margin-left: -60px;
-  opacity: 0;
   transition: opacity 0.3s;
   font-family: ${FONT_BASE};
   box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
@@ -40,15 +55,10 @@ const TipsPopover = styled.span`
     border-style: solid;
     border-color: #fff transparent transparent transparent;
   }
-
-  ${Tips}:hover & {
-    visibility: visible;
-    opacity: 1;
-  }
 `
 
-export const ToolTips = ({ children, tips }) => (
-  <Tips>{children}<TipsPopover>{tips}</TipsPopover></Tips>
+export const ToolTips = ({ children, tips, visible }) => (
+  <Tips>{children}<TipsPopover pose={visible ? "fadeIn" : "fadeOut"} visible={visible}>{visible && tips}</TipsPopover></Tips>
 )
 
 ToolTips.propTypes = {
@@ -58,11 +68,13 @@ ToolTips.propTypes = {
     element,
     node,
     string
-  ])
+  ]),
+  visible: bool,
 }
 
 ToolTips.defaultProps = {
-  children: ''
+  children: '',
+  visible: false,
 }
 
 export default ToolTips
