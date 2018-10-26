@@ -10,11 +10,11 @@ import BLACK_CLOSE_MODAL from './assets/images/black-close-modal.png'
 const Animation = {
   fadeIn: {
     opacity: 1,
-    transition: { duration: 500 }
+    transition: { duration: 300 }
   },
   fadeOut: {
     opacity: 0,
-    transition: { duration: 500 }
+    transition: { duration: 300 }
   }
 }
 

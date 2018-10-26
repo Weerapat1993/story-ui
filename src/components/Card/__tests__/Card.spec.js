@@ -17,18 +17,17 @@ describe(title, () => {
   })
 
   it(`renders ${title} components check style when prop color = null`, () => {
+    const borderColor = '#999'
     const color = '#333'
     const wrapper = shallow(<Card title='Title'>Card Body</Card>);
-    expect(wrapper.find(CardPlate)).toHaveStyleRule('border-color', color)
     expect(wrapper.find(CardTitle)).toHaveStyleRule('color', color)
-    expect(wrapper.find(CardHeader)).toHaveStyleRule('border-bottom-color', color)
+    expect(wrapper.find(CardHeader)).toHaveStyleRule('border-bottom-color', borderColor)
     expect(wrapper.find(CardHeader)).toHaveStyleRule('background-color', 'transparent')
   })
 
   it(`renders ${title} components check style when prop color = red`, () => {
     const color = 'red'
     const wrapper = shallow(<Card title='Title' color={color}>Card Body</Card>);
-    expect(wrapper.find(CardPlate)).toHaveStyleRule('border-color', color)
     expect(wrapper.find(CardTitle)).toHaveStyleRule('color', '#fff')
     expect(wrapper.find(CardHeader)).toHaveStyleRule('border-bottom-color', color)
     expect(wrapper.find(CardHeader)).toHaveStyleRule('background-color', color)
