@@ -10,9 +10,8 @@ const NavbarHeader = styled.nav`
   justify-content: center;
   align-items: center;
   flex: 1;
+  width: 100%;
 `
-
-
 export const Navbar = (props) => (
   <NavbarHeader {...props}>
     {React.Children.map(props.children, child =>
