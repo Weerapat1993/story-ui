@@ -1,9 +1,8 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+// import { NavLink } from 'react-router-dom'
 import { func, element, node, oneOfType, string, bool } from 'prop-types'
 import styled from 'styled-components'
 
-const NavbarBTN = styled(NavLink)`
+export const NavbarItem = styled.a`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -12,6 +11,7 @@ const NavbarBTN = styled(NavLink)`
   color: ${props => props.color};
   font-size: 12px;
   position: relative;
+  text-decoration: none;
   &:hover {
     color: ${props => props.color};
     text-decoration: ${props => props.isUnderline ? 'underline' : 'node'};
@@ -29,13 +29,7 @@ const NavbarBTN = styled(NavLink)`
   &:last-child::after {
     width: 0px;
   }
-`
-
-export const NavbarItem = (props) => (
-  <NavbarBTN {...props}>
-    {props.children}
-  </NavbarBTN>
-)
+`;
 
 NavbarItem.propTypes = {
   to: string.isRequired,
@@ -50,7 +44,7 @@ NavbarItem.propTypes = {
     node,
     string,
   ])
-}
+};
 
 NavbarItem.defaultProps = {
   color: 'white',
@@ -58,4 +52,4 @@ NavbarItem.defaultProps = {
   isLine: false,
   isUnderline: false,
   children: ''
-}
+};
