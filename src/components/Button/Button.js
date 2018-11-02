@@ -46,7 +46,7 @@ export const BTN = styled(ButtonAnimate)`
   ${props => props.isActions ? 'margin: 0' : 'margin: 0.5em'};
   padding: ${props => props.padding || buttonSize};
   border: 2px solid ${props => props.color};
-  border-radius: 8px;
+  border-radius: 0px;
   ${props => !props.outline && !props.isActions ? 'border-bottom: 3px solid rgba(0, 0, 0, 0.2);' : ''}
 `;
 
@@ -60,7 +60,7 @@ export const BtnNoAnimation = styled.button`
   ${props => props.isActions ? 'margin: 0' : 'margin: 0.5em'};
   padding: ${props => props.padding || buttonSize};
   border: 2px solid ${props => props.color};
-  border-radius: 8px;
+  border-radius: 0px;
   ${props => !props.outline && !props.isActions ? 'border-bottom: 3px solid rgba(0, 0, 0, 0.2);' : ''}
   ${props => !props.outline && (props.disabled || props.loading) ? 'border-bottom: 3px solid rgba(0, 0, 0, 0.2);' : ''}
   opacity: ${props => props.disabled ? '0.5' : '1'};

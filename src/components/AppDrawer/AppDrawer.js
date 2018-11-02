@@ -108,11 +108,11 @@ class AppDrawer extends PureComponent {
     return (
       <Fragment>
         <AppDrawerHeader {...this.props}>
-          <Button onClick={() => this.setVisible(true)}>Menu</Button>
+          <Button isActions onClick={() => this.setVisible(true)}>Menu</Button>
           <Flex />
           {title}
           <Flex />
-          <Button onClick={() => this.setVisible(true)}>Menu</Button>
+          <Button isActions onClick={() => this.setVisible(true)}>Menu</Button>
         </AppDrawerHeader>
         <PoseGroup>
           {
