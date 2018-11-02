@@ -1,10 +1,12 @@
 import React from 'react'
-import { func, number, element, node, oneOfType, oneOf } from 'prop-types'
+import { func, number, element, node, oneOfType, oneOf, string } from 'prop-types'
 import styled from 'styled-components'
 
 export const Column = styled.div`
   flex: ${props => props.flex};
   flex-direction: ${props => props.flexDirection};
+  text-align: ${props => props.align};
+  padding: ${props => props.padding};
 `
 
 export const Col = (props) => {
@@ -28,6 +30,12 @@ Col.propTypes = {
     'column',
     'column-reverse',
   ]),
+  align: oneOf([
+    'left',
+    'center',
+    'right',
+  ]),
+  padding: string,
   children: oneOfType([
     func,
     element,
@@ -38,6 +46,8 @@ Col.propTypes = {
 Col.defaultProps = {
   flex: 1,
   flexDirection: 'column',
+  padding: '0',
+  align: 'left',
   children: ''
 }
 
